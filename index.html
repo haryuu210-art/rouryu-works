@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROURYU Works — ポートフォリオ</title>
+  <meta name="description" content="ROURYUのポートフォリオ。Claude Codeを活用して制作したWebサイト・配信オーバーレイの作品集。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:     #a3e635;
+      --green-dim: #5a7d1a;
+      --pink:      #c4b5fd;
+      --bg:        #0e0b1a;
+      --bg2:       #13111c;
+      --bg3:       #1a1728;
+      --border:    rgba(163,230,53,0.18);
+      --text:      #f8fafc;
+      --muted:     #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11,26,14,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--green);
+    }
+    .nav-logo span { color: var(--pink); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 88vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 48px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(76,175,125,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
+      color: var(--green); border: 1px solid var(--border);
+      padding: 6px 20px; border-radius: 100px;
+      margin-bottom: 32px;
+      display: inline-block;
+    }
+    .hero h1 {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: clamp(40px, 7vw, 88px);
+      font-weight: 900; line-height: 1.15;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero h1 em { color: var(--pink); font-style: normal; }
+    .hero-sub {
+      font-size: 15px; color: var(--muted);
+      letter-spacing: 0.1em; line-height: 1.9;
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+    .hero-stats {
+      display: flex; gap: 40px; justify-content: center;
+      margin-bottom: 48px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 36px; font-weight: 700;
+      color: var(--green); line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--muted); margin-top: 4px;
+    }
+    .hero-scroll {
+      font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--muted);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--green), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 96px 48px; }
+    section + section { border-top: 1px solid var(--border); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 48px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--border);
+    }
+    .section-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 32px; font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .section-title span { color: var(--green); }
+    .section-desc {
+      font-size: 14px; color: var(--muted);
+      line-height: 1.9; margin-bottom: 48px;
+      max-width: 640px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .about-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 32px;
+    }
+    .about-card-label {
+      font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 16px;
+    }
+    .about-card p {
+      font-size: 14px; line-height: 1.9; color: var(--muted);
+    }
+    .about-card p strong { color: var(--text); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag {
+      font-size: 11px; letter-spacing: 0.15em;
+      color: var(--green);
+      background: rgba(76,175,125,0.10);
+      border: 1px solid rgba(76,175,125,0.25);
+      padding: 4px 14px; border-radius: 100px;
+    }
+    .tag.pink {
+      color: var(--pink);
+      background: rgba(249,199,213,0.08);
+      border-color: rgba(249,199,213,0.25);
+    }
+
+    /* ─── WORKS ─── */
+    .work-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      margin-bottom: 48px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .work-card:hover {
+      border-color: rgba(76,175,125,0.4);
+      box-shadow: 0 16px 48px rgba(76,175,125,0.08);
+    }
+    .work-img-area {
+      background: #080f09;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2px; padding: 2px;
+    }
+    .work-img-area img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    .work-img-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      background: #0a1a0c;
+      border: 1px dashed rgba(76,175,125,0.2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; color: var(--muted);
+      font-size: 12px; letter-spacing: 0.2em;
+    }
+    .work-img-placeholder .placeholder-icon {
+      font-size: 28px; opacity: 0.4;
+    }
+    .work-body { padding: 32px 36px 36px; }
+    .work-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .work-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 26px; font-weight: 900;
+      margin-bottom: 12px; letter-spacing: 0.04em;
+    }
+    .work-title span { color: var(--green); }
+    .work-desc { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 24px; }
+    .work-features {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      list-style: none; margin-bottom: 24px;
+    }
+    .work-features li {
+      font-size: 12px; color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .work-features li::before {
+      content: '▸'; color: var(--green); font-size: 10px;
+    }
+    .work-period {
+      font-size: 11px; letter-spacing: 0.3em; color: var(--green-dim);
+      text-transform: uppercase;
+    }
+
+    /* ─── SKILLS ─── */
+    .skill-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .skill-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 28px;
+    }
+    .skill-card-label {
+      font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 12px;
+    }
+    .skill-card-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 18px; font-weight: 700;
+      margin-bottom: 8px; letter-spacing: 0.04em;
+    }
+    .skill-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .skill-bar-wrap { margin-top: 12px; }
+    .skill-bar-label {
+      display: flex; justify-content: space-between;
+      font-size: 11px; color: var(--muted); margin-bottom: 4px;
+    }
+    .skill-bar {
+      height: 4px; background: rgba(76,175,125,0.12);
+      border-radius: 100px; overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%; background: var(--green);
+      border-radius: 100px;
+      transition: width 1s ease;
+    }
+
+    /* ─── SERVICE ─── */
+    .service-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 32px;
+    }
+    .service-card.featured {
+      border-color: rgba(76,175,125,0.4);
+      background: linear-gradient(135deg, #0f2012, #131f14);
+    }
+    .service-badge {
+      display: inline-block;
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--green); background: rgba(76,175,125,0.12);
+      border: 1px solid rgba(76,175,125,0.25);
+      padding: 3px 12px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .service-badge.pink {
+      color: var(--pink); background: rgba(249,199,213,0.08);
+      border-color: rgba(249,199,213,0.25);
+    }
+    .service-card h3 {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .service-price {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 28px; font-weight: 700;
+      color: var(--green); margin-top: 16px;
+    }
+    .service-price span { font-size: 14px; color: var(--muted); font-family: 'Noto Sans JP', sans-serif; }
+    .notice {
+      margin-top: 32px;
+      background: rgba(249,199,213,0.06);
+      border: 1px solid rgba(249,199,213,0.2);
+      border-radius: 10px; padding: 20px 24px;
+    }
+    .notice p { font-size: 13px; color: #c4a0aa; line-height: 1.8; }
+
+    /* ─── CONTACT ─── */
+    .contact-inner {
+      text-align: center; max-width: 560px; margin: 0 auto;
+    }
+    .contact-inner h2 {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 36px; font-weight: 900; margin-bottom: 16px;
+    }
+    .contact-inner h2 span { color: var(--green); }
+    .contact-inner p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 40px; }
+    .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 8px;
+      font-size: 13px; letter-spacing: 0.2em; font-weight: 700;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--green); color: #051008;
+    }
+    .btn-primary:hover { background: #5fcf91; transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--green);
+    }
+    .footer-logo span { color: var(--pink); }
+    .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.2em; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero { padding: 80px 20px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skill-grid { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .hero-stats { gap: 24px; }
+    }
+
+    /* ─── 右クリック・選択禁止 ─── */
+    img { pointer-events: none; -webkit-user-drag: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ROURYU<span> Works</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#works">Works</a>
+    <a href="#skills">Skills</a>
+    <a href="#service">Service</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-badge">Portfolio 2026</div>
+  <h1>
+    コードを書かずに、<br>
+    <span>Webを作る。</span><br>
+    <em>ROURYU Works</em>
+  </h1>
+  <p class="hero-sub">
+    プログラミング未経験・Claude Code歴13日。<br>
+    AIと対話しながら、ゲーム攻略サイトと配信オーバーレイを制作。<br>
+    「作りたい」を「できた」に変える、新しいものづくりのかたち。
+  </p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">13</div>
+      <div class="stat-label">Days</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Themes</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <h2 class="section-title">非エンジニアが、<span>AIとつくる。</span></h2>
+    <p class="section-desc">
+      プログラミングの知識・経験ゼロ。コードは読めない。<br>
+      それでもClaude Codeに日本語で話しかけるだけで、複雑なWebサイトを構築できました。
+    </p>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-label">Profile</div>
+        <p>
+          <strong>ROURYU</strong><br><br>
+          ゲーマー・配信者。<br>
+          エターナルリターンを中心にゲームを楽しみながら、
+          Claude Codeを使ったWebコンテンツ制作を探求中。<br><br>
+          「作りたいものがある」という気持ちだけを武器に、
+          AIとの対話でWebサイト・配信素材を制作しています。
+        </p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Tools & Skills</div>
+        <p>制作に使っているツール・技術</p>
+        <div class="tag-list">
+          <span class="tag">Claude Code</span>
+          <span class="tag">ChatGPT</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">Git / GitHub</span>
+          <span class="tag">GitHub Pages</span>
+          <span class="tag pink">Adobe Creative Cloud</span>
+          <span class="tag pink">OBS Studio</span>
+          <span class="tag pink">Streamlabs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-inner">
+    <div class="section-label">Works</div>
+    <h2 class="section-title">制作<span>実績</span></h2>
+    <p class="section-desc">Claude Code使用開始から13日間で制作した2つのプロジェクト。</p>
+
+    <!-- Work 1: ERラボ -->
+    <div class="work-card">
+      <div class="work-img-area" id="erlabo-imgs">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193627.png" alt="ERラボ ホーム画面">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193619.png" alt="ERラボ キャラ対策データベース">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193636.png" alt="ERラボ ランク上げガイド">
+      </div>
+      <div class="work-body">
+        <div class="work-tags">
+          <span class="tag">Web サイト</span>
+          <span class="tag">攻略情報</span>
+          <span class="tag pink">個人制作</span>
+        </div>
+        <h3 class="work-title"><span>ER</span>ラボ</h3>
+        <p class="work-desc">
+          エターナルリターン（BR系PCゲーム）の個人用攻略情報サイト。
+          キャラクター図鑑・ランクガイド・更新履歴を複数ページで構成。
+          ゲームの知識と経験を活かしながら、Claude Codeで全て制作。
+        </p>
+        <ul class="work-features">
+          <li>キャラクター図鑑（検索・ロールフィルター・詳細パネル）</li>
+          <li>ランクガイド（横スクロールタイムライン・タグ付きカード）</li>
+          <li>画像ライトボックス（ズーム・ドラッグ・ピンチ対応）</li>
+          <li>レスポンシブ対応（PC・スマホ）</li>
+          <li>Google DriveからのPython自動ダウンロード</li>
+        </ul>
+        <div class="work-period">制作期間 / 2026年5月〜 継続更新中</div>
+      </div>
+    </div>
+
+    <!-- Work 2: 配信オーバーレイ -->
+    <div class="work-card">
+      <div class="work-img-area" id="overlay-imgs">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193139.png" alt="オーバーレイ テーマ一覧">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193041.png" alt="オーバーレイ wolf opening">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193030.png" alt="オーバーレイ wolf ending">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193116.png" alt="オーバーレイ 和風 opening">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193452.png" alt="オーバーレイ gothic dark ending">
+        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193244.png" alt="オーバーレイ pastel opening">
+      </div>
+      <div class="work-body">
+        <div class="work-tags">
+          <span class="tag">配信素材</span>
+          <span class="tag">OBS対応</span>
+          <span class="tag pink">6テーマ</span>
+        </div>
+        <h3 class="work-title">配信<span>オーバーレイ</span></h3>
+        <p class="work-desc">
+          OBS / Streamlabs 対応のブラウザソース用HTMLオーバーレイ。
+          opening・ending・BRB・live・camera・alertの6コンポーネントをテーマ切り替え式で制作。
+          自身の配信で実際に運用中。
+        </p>
+        <ul class="work-features">
+          <li>6コンポーネント（opening / ending / BRB / live / camera / alert）</li>
+          <li>6テーマ（cyber neon / gothic dark / mono simple / natural spring / pastel pop / 和風dark）</li>
+          <li>1920×1080 フルHD対応</li>
+          <li>CSS変数によるテーマ切り替えシステム</li>
+          <li>自身の配信で実運用・継続改善中</li>
+        </ul>
+        <div class="work-period">制作期間 / 2026年5月〜 継続更新中</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">Claude Code<span>活用力</span></h2>
+    <p class="section-desc">非エンジニアとして13日間で習得したClaude Codeの活用スキル。</p>
+
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="skill-card-label">Tool Mastery</div>
+        <div class="skill-card-title">ツール活用深度</div>
+        <p>Worktree・メモリシステム・カスタムスキル・hooksを使いこなし、作業を体系化</p>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span></span><span>88 / 100</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Operations</div>
+        <div class="skill-card-title">運用・保守</div>
+        <p>Git管理・GitHub Pages公開・セキュリティ設定・手順書化まで対応</p>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span></span><span>85 / 100</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Architecture</div>
+        <div class="skill-card-title">プロジェクト設計</div>
+        <p>複数ページ構成・データ分離・再利用可能な構造を設計・実装</p>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span></span><span>80 / 100</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">UI / UX</div>
+        <div class="skill-card-title">UI実装の複雑度</div>
+        <p>ライトボックス・フィルター・アニメーション・レスポンシブを実装</p>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span></span><span>75 / 100</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Portfolio</div>
+        <div class="skill-card-title">成果物の完成度</div>
+        <p>実際に自分で使い・運用し続けているプロダクトとして仕上げている</p>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span></span><span>70 / 100</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Position</div>
+        <div class="skill-card-title">国内評価ポジション</div>
+        <p>日本国内・非エンジニアClaude Codeユーザーの中で上位5〜8%（使用13日時点）</p>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span></span><span>上位 5〜8%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:93%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <div class="section-inner">
+    <div class="section-label">Service</div>
+    <h2 class="section-title">対応できる<span>制作内容</span></h2>
+    <p class="section-desc">Claude Codeを活用して対応できる制作依頼の範囲です。</p>
+    <div class="service-grid">
+      <div class="service-card featured">
+        <span class="service-badge">Today Ready</span>
+        <h3>静的Webサイト制作</h3>
+        <p>ポートフォリオ・ゲーム攻略サイト・LP・個人ブログなど。<br>デザインから公開（GitHub Pages）まで対応。</p>
+      </div>
+      <div class="service-card featured">
+        <span class="service-badge">Today Ready</span>
+        <h3>配信オーバーレイ制作</h3>
+        <p>OBS / Streamlabs 対応のHTMLオーバーレイ。<br>opening・ending・BRB・live等、要望に合わせて制作。</p>
+      </div>
+      <div class="service-card">
+        <span class="service-badge pink">Coming Soon</span>
+        <h3>オーバーレイテーマ販売</h3>
+        <p>Booth等での配信オーバーレイテーマの販売を準備中。<br>複数テーマをパッケージで提供予定。</p>
+      </div>
+      <div class="service-card">
+        <span class="service-badge pink">Coming Soon</span>
+        <h3>その他Webコンテンツ</h3>
+        <p>イベントページ・告知LP・ゲームコミュニティ向けサイトなど。<br>まずはご相談ください。</p>
+      </div>
+    </div>
+    <div class="notice">
+      <p>
+        ※ 現在は静的Webサイト・配信オーバーレイの制作が対応範囲です。<br>
+        ログイン機能・ECサイト・既存コードの改修はお受けできません。<br>
+        まずはお気軽にXのDMでご相談ください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center; margin-bottom:32px;">Contact</div>
+    <h2>お仕事・ご相談は<br><span>こちらから</span></h2>
+    <p>
+      制作依頼・ご質問・コラボのご相談など、<br>
+      お気軽にXのDMまたはランサーズよりご連絡ください。
+    </p>
+    <div class="btn-group">
+      <a href="https://x.com/haryuu210" class="btn btn-primary" target="_blank" rel="noopener">X（旧Twitter）でDM</a>
+      <a href="https://www.lancers.jp/profile/takahiro210?ref=header_menu" class="btn btn-outline" target="_blank" rel="noopener">ランサーズへ</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ROURYU<span> Works</span></div>
+  <div class="footer-copy">© 2026 ROURYU. All rights reserved. 無断転載・無断使用禁止。</div>
+</footer>
+
+<script>
+  // 右クリック禁止
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // スキルバーのアニメーション（スクロール時）
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.dataset.width;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+    const w = bar.style.width;
+    bar.dataset.width = w;
+    bar.style.width = '0';
+    observer.observe(bar);
+  });
+</script>
+
+</body>
+</html>
