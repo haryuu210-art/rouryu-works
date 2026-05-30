@@ -228,6 +228,7 @@
     }
     #lightbox-close:hover { opacity: 1; }
     .work-img-placeholder {
+      grid-column: 1 / -1;
       width: 100%; aspect-ratio: 16/9;
       background: #0a1a0c;
       border: 1px dashed rgba(76,175,125,0.2);
@@ -238,6 +239,10 @@
     }
     .work-img-placeholder .placeholder-icon {
       font-size: 28px; opacity: 0.4;
+    }
+    .imagegen-gallery img {
+      object-fit: contain;
+      background: #f6f2ea;
     }
     .work-body { padding: 32px 36px 36px; }
     .work-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -425,7 +430,7 @@
   </h1>
   <p class="hero-sub">
     プログラミング未経験からCodexとClaude Codeを活用。<br>
-    AIと対話しながら、ゲーム攻略サイトと配信オーバーレイを制作。<br>
+    AIと対話しながら、ゲーム攻略サイト・画像生成作品・配信オーバーレイを制作。<br>
     「作りたい」を「できた」に変える、新しいものづくりのかたち。
   </p>
   <div class="hero-stats">
@@ -434,7 +439,7 @@
       <div class="stat-label">Days</div>
     </div>
     <div class="stat">
-      <div class="stat-num">2</div>
+      <div class="stat-num">3</div>
       <div class="stat-label">Projects</div>
     </div>
     <div class="stat">
@@ -496,14 +501,15 @@
   <div class="section-inner">
     <div class="section-label">Works</div>
     <h2 class="section-title">制作<span>実績</span></h2>
-    <p class="section-desc">CodexとClaude CodeなどのAIツールを活用して制作・改善しているプロジェクト。</p>
+    <p class="section-desc">CodexとClaude CodeなどのAIツールを活用して制作・改善しているプロジェクト。エタリタ関連画像は掲載せず、公開可能なオリジナル作品のみ掲載しています。</p>
 
     <!-- Work 1: ERラボ -->
     <div class="work-card">
       <div class="work-img-area" id="erlabo-imgs">
-        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193627.png" alt="ERラボ ホーム画面">
-        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193619.png" alt="ERラボ キャラ対策データベース">
-        <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193636.png" alt="ERラボ ランク上げガイド">
+        <div class="work-img-placeholder">
+          <div class="placeholder-icon">ER LAB</div>
+          <div>攻略サイト実績 / 権利配慮のためゲーム画像は非掲載</div>
+        </div>
       </div>
       <div class="work-body">
         <div class="work-tags">
@@ -528,7 +534,36 @@
       </div>
     </div>
 
-    <!-- Work 2: 配信オーバーレイ -->
+    <!-- Work 2: AI画像生成 -->
+    <div class="work-card">
+      <div class="work-img-area imagegen-gallery" id="ai-image-imgs">
+        <img src="images/ai-wasou-maid-wallpaper-set.png" alt="和装メイド スマホ壁紙セットのプレビュー">
+        <img src="images/ai-wasou-maid-variations.png" alt="和装メイド 壁紙バリエーションのプレビュー">
+      </div>
+      <div class="work-body">
+        <div class="work-tags">
+          <span class="tag">AI画像生成</span>
+          <span class="tag">スマホ壁紙</span>
+          <span class="tag pink">オリジナル</span>
+        </div>
+        <h3 class="work-title">画像生成<span>作品</span></h3>
+        <p class="work-desc">
+          オリジナルの和装メイドを題材にしたスマホ壁紙セット。
+          GPT、ComfyUI、Codexを組み合わせ、テーマ設計・生成・選定・壁紙向け調整・権利チェックまで行いました。
+          既存IP名やエタリタ関連画像は使用していません。
+        </p>
+        <ul class="work-features">
+          <li>9:16スマホ壁紙向けの縦長構図</li>
+          <li>ロック画面・ホーム画面向けの明るさ調整</li>
+          <li>色味違い・雰囲気違いのバリエーション制作</li>
+          <li>権利チェックメモを作成し、公開リスクを確認</li>
+          <li>販売・SNS投稿を見据えたプレビュー整理</li>
+        </ul>
+        <div class="work-period">制作期間 / 2026年5月</div>
+      </div>
+    </div>
+
+    <!-- Work 3: 配信オーバーレイ -->
     <div class="work-card">
       <div class="work-img-area" id="overlay-imgs">
         <img src="images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-05-18%20193139.png" alt="オーバーレイ テーマ一覧">
