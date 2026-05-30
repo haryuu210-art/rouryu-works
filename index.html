@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROURYU Works — ポートフォリオ</title>
-  <meta name="description" content="ROURYUのポートフォリオ。CodexとClaude Codeを活用して制作したWebサイト・配信オーバーレイの作品集。">
+  <title>ROURYU Works｜AI活用Web制作・配信オーバーレイ制作</title>
+  <meta name="description" content="ROURYU Worksは、Codex / Claude Codeを活用して制作したWebサイト・画像生成作品・配信オーバーレイをまとめたポートフォリオです。個人配信者・クリエイター向けに、小規模な静的WebサイトやOBS / Streamlabs対応HTMLオーバーレイ制作を行っています。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
@@ -92,8 +92,17 @@
     .hero-sub {
       font-size: 15px; color: var(--muted);
       letter-spacing: 0.1em; line-height: 1.9;
-      max-width: 560px;
-      margin-bottom: 48px;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .hero-note {
+      font-size: 14px; color: #c4cbd7;
+      line-height: 2; max-width: 760px;
+      margin-bottom: 32px;
+    }
+    .hero-cta {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 44px;
     }
     .hero-stats {
       display: flex; gap: 40px; justify-content: center;
@@ -274,6 +283,20 @@
       font-size: 11px; letter-spacing: 0.3em; color: var(--green-dim);
       text-transform: uppercase;
     }
+    .work-actions {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px;
+    }
+    .mini-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 38px; padding: 9px 16px;
+      border-radius: 8px; border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      font-size: 12px; letter-spacing: 0.12em;
+      transition: all 0.2s;
+    }
+    .mini-btn:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+    .mini-btn.primary { background: rgba(163,230,53,0.9); color: #071008; border-color: transparent; }
+    .mini-btn.primary:hover { background: var(--green); color: #071008; }
 
     /* ─── SKILLS ─── */
     .skill-grid {
@@ -294,21 +317,15 @@
       margin-bottom: 8px; letter-spacing: 0.04em;
     }
     .skill-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
-    .skill-bar-wrap { margin-top: 12px; }
-    .skill-bar-label {
-      display: flex; justify-content: space-between;
-      font-size: 11px; color: var(--muted); margin-bottom: 4px;
-    }
-    .skill-bar {
-      height: 4px; background: rgba(76,175,125,0.12);
-      border-radius: 100px; overflow: hidden;
-    }
-    .skill-bar-fill {
-      height: 100%; background: var(--green);
+    .skill-level {
+      display: inline-flex; align-items: center;
+      margin-top: 14px; padding: 4px 12px;
       border-radius: 100px;
-      transition: width 1s ease;
+      background: rgba(163,230,53,0.10);
+      border: 1px solid rgba(163,230,53,0.22);
+      color: var(--green);
+      font-size: 11px; letter-spacing: 0.16em;
     }
-
     /* ─── SERVICE ─── */
     .service-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
@@ -353,6 +370,98 @@
       border-radius: 10px; padding: 20px 24px;
     }
     .notice p { font-size: 13px; color: #c4a0aa; line-height: 1.8; }
+    .service-card ul,
+    .compact-list {
+      list-style: none; display: grid; gap: 8px; margin-top: 16px;
+    }
+    .service-card li,
+    .compact-list li {
+      font-size: 12px; color: var(--muted); line-height: 1.7;
+      position: relative; padding-left: 16px;
+    }
+    .service-card li::before,
+    .compact-list li::before {
+      content: '▸'; color: var(--green); position: absolute; left: 0;
+    }
+    .info-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      margin-top: 32px;
+    }
+    .info-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+    .info-card h3 {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 18px; margin-bottom: 10px;
+    }
+    .info-card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .price-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+      margin-top: 28px;
+    }
+    details.price-card,
+    details.faq-item,
+    details.scope-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0;
+      overflow: hidden;
+    }
+    details summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 24px;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-weight: 700;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+';
+      float: right;
+      color: var(--green);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px;
+      line-height: 1;
+    }
+    details[open] summary::after { content: '−'; }
+    .details-body {
+      padding: 0 24px 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .price-line {
+      display: flex; justify-content: space-between; gap: 16px;
+      border-bottom: 1px solid rgba(163,230,53,0.10);
+      padding: 8px 0;
+    }
+    .price-line strong { color: var(--text); font-weight: 700; }
+    .flow-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px;
+      margin-top: 28px;
+    }
+    .flow-step {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 16px;
+      min-height: 160px;
+    }
+    .flow-step span {
+      color: var(--green);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .flow-step h3 {
+      font-size: 14px;
+      margin: 6px 0;
+    }
+    .flow-step p { font-size: 12px; color: var(--muted); line-height: 1.7; }
 
     /* ─── CONTACT ─── */
     .contact-inner {
@@ -403,8 +512,12 @@
       .about-grid { grid-template-columns: 1fr; }
       .skill-grid { grid-template-columns: 1fr; }
       .service-grid { grid-template-columns: 1fr; }
+      .info-grid, .price-grid { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
       .hero-stats { gap: 24px; }
+      .hero-sub { letter-spacing: 0.04em; }
+      .hero-note { font-size: 13px; }
     }
 
     /* ─── 右クリック・選択禁止 ─── */
@@ -435,10 +548,16 @@
     <em>ROURYU Works</em>
   </h1>
   <p class="hero-sub">
-    プログラミング未経験からCodexとClaude Codeを活用。<br>
-    AIと対話しながら、ゲーム攻略サイト・画像生成作品・配信オーバーレイを制作。<br>
-    「作りたい」を「できた」に変える、新しいものづくりのかたち。
+    Codex / Claude Codeを活用して、<br>
+    配信者向けオーバーレイ・ポートフォリオ・攻略サイトを制作しています。
   </p>
+  <p class="hero-note">
+    プログラミング未経験から、AIと対話しながら「作りたい」を「公開できる形」まで仕上げる制作スタイルです。個人配信者・クリエイターに近い視点で、見やすく、使いやすく、相談しやすい制作を目指しています。
+  </p>
+  <div class="hero-cta">
+    <a href="#works" class="btn btn-primary">制作実績を見る</a>
+    <a href="#contact" class="btn btn-outline">Xで相談する</a>
+  </div>
   <div class="hero-stats">
     <div class="stat">
       <div class="stat-num" id="days-count">—</div>
@@ -465,8 +584,7 @@
     <div class="section-label">About</div>
     <h2 class="section-title">非エンジニアが、<span>AIとつくる。</span></h2>
     <p class="section-desc">
-      プログラミングの知識・経験ゼロ。コードは読めない。<br>
-      それでもCodexやClaude Codeに日本語で相談しながら、複雑なWebサイトを構築できました。
+      ゲーム配信を行いながら、Codex / Claude Code / ChatGPTなどのAIツールを活用して、Webサイト・配信オーバーレイ・画像生成作品の制作に取り組んでいます。AIと日本語で対話しながら、構成づくり、デザイン調整、公開、改善まで進めています。
     </p>
     <div class="about-grid">
       <div class="about-card">
@@ -498,6 +616,22 @@
           <span class="tag pink">Streamlabs</span>
         </div>
       </div>
+      <div class="about-card">
+        <div class="about-card-label">Focus</div>
+        <p>
+          専門的な大規模開発ではなく、個人配信者・クリエイターが活動を見せやすくするための小規模なWeb制作や配信画面づくりを中心に行っています。
+        </p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Values</div>
+        <ul class="compact-list">
+          <li>見た人に内容がすぐ伝わること</li>
+          <li>スマホでも見やすいこと</li>
+          <li>依頼者が使いやすいこと</li>
+          <li>対応できる範囲を正直に伝えること</li>
+          <li>公開後も改善しやすいこと</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -507,7 +641,7 @@
   <div class="section-inner">
     <div class="section-label">Works</div>
     <h2 class="section-title">制作<span>実績</span></h2>
-    <p class="section-desc">CodexとClaude CodeなどのAIツールを活用して制作・改善しているプロジェクト。エタリタ関連画像は掲載せず、公開可能なオリジナル作品のみ掲載しています。</p>
+    <p class="section-desc">Codex / Claude CodeなどのAIツールを活用して制作・改善しているプロジェクトです。実際に制作・運用・改善しているものを中心に、権利面に配慮しながら公開可能なオリジナル作品・個人制作物を掲載しています。</p>
 
     <!-- Work 1: ERラボ -->
     <div class="work-card">
@@ -525,18 +659,24 @@
         </div>
         <h3 class="work-title"><span>ER</span>ラボ</h3>
         <p class="work-desc">
-          エターナルリターン（BR系PCゲーム）の個人用攻略情報サイト。
-          キャラクター図鑑・ランクガイド・更新履歴を複数ページで構成。
-          ゲームの知識と経験を活かしながら、CodexとClaude Codeを活用して制作・継続改善。
+          エターナルリターンを題材にした個人用攻略情報サイトです。
+          キャラクター情報、ランクガイド、更新履歴などを複数ページで構成し、情報を探しやすくすることを意識して制作しています。
+          CodexとClaude Codeを活用しながら、静的サイトとして制作・公開・継続改善しています。
         </p>
         <ul class="work-features">
-          <li>キャラクター図鑑（検索・ロールフィルター・詳細パネル）</li>
-          <li>ランクガイド（横スクロールタイムライン・タグ付きカード）</li>
+          <li>キャラクター図鑑</li>
+          <li>検索、ロールフィルター、詳細パネル</li>
+          <li>ランクガイド</li>
+          <li>横スクロールタイムライン</li>
           <li>画像ライトボックス（ズーム・ドラッグ・ピンチ対応）</li>
-          <li>レスポンシブ対応（PC・スマホ）</li>
-          <li>Google DriveからのPython自動ダウンロード</li>
+          <li>PC / スマホ対応</li>
+          <li>GitHub Pagesで公開できる静的サイト構成</li>
         </ul>
         <div class="work-period">制作期間 / 2026年5月〜 継続更新中</div>
+        <div class="work-actions">
+          <a class="mini-btn primary" href="https://haryuu210-art.github.io/er-labo/" target="_blank" rel="noopener">サイトを見る</a>
+          <a class="mini-btn" href="#contact">詳しく聞く</a>
+        </div>
       </div>
     </div>
 
@@ -555,20 +695,24 @@
           <span class="tag">SFアンドロイド</span>
           <span class="tag pink">オリジナル</span>
         </div>
-        <h3 class="work-title">画像生成<span>作品</span></h3>
+        <h3 class="work-title">AI Image <span>Works</span></h3>
         <p class="work-desc">
-          オリジナルの和風メイドとSFアンドロイドを題材にした画像生成作品。
-          GPT、ComfyUI、Codexを組み合わせ、テーマ設計・生成・選定・公開向け整理まで行いました。
-          既存IP名やエタリタ関連画像は使用していません。
+          オリジナルの和風メイド、SFアンドロイド、ファンタジー系ビジュアルなどを題材にした画像生成作品です。
+          GPT、Gemini、画像生成AIを組み合わせ、テーマ設計、プロンプト調整、画像選定、公開向け整理まで行っています。
+          作品そのものだけでなく、見せ方、用途、公開しやすさまで意識して制作しています。
         </p>
         <ul class="work-features">
-          <li>和風建築・海辺・近未来ラボを使った縦長構図</li>
-          <li>スマホ壁紙や作品サンプルとして見せやすい明るさと見栄え</li>
-          <li>和装メイド・SFアンドロイドをオリジナルキャラクターとして整理</li>
-          <li>既存IP名・公式素材・ゲーム画像を使わない構成</li>
-          <li>指定外の画像やエタリタ関連画像は非掲載</li>
+          <li>スマホ壁紙向けの縦長構図</li>
+          <li>和風、SF、ファンタジー系のビジュアル制作</li>
+          <li>テーマ設計からプロンプト調整まで対応</li>
+          <li>既存IP名や公式素材を使わない構成</li>
+          <li>公開用サンプルとして整理</li>
         </ul>
         <div class="work-period">制作期間 / 2026年5月</div>
+        <div class="work-actions">
+          <a class="mini-btn primary" href="#ai-image-imgs">ギャラリーを見る</a>
+          <a class="mini-btn" href="#contact">サンプル相談</a>
+        </div>
       </div>
     </div>
 
@@ -588,11 +732,11 @@
           <span class="tag">OBS対応</span>
           <span class="tag pink">6テーマ</span>
         </div>
-        <h3 class="work-title">配信<span>オーバーレイ</span></h3>
+        <h3 class="work-title">Stream <span>Overlay</span></h3>
         <p class="work-desc">
-          OBS / Streamlabs 対応のブラウザソース用HTMLオーバーレイ。
-          opening・ending・BRB・live・camera・alertの6コンポーネントをテーマ切り替え式で制作。
-          自身の配信で実際に運用中。
+          OBS / Streamlabs対応のブラウザソース用HTMLオーバーレイです。
+          opening / ending / BRB / live / camera / alertなど、配信に必要な画面素材をテーマ切り替え式で制作しています。
+          画面サイズ、視認性、テーマ切り替え、使いやすさを意識して制作・改善しています。
         </p>
         <ul class="work-features">
           <li>6コンポーネント（opening / ending / BRB / live / camera / alert）</li>
@@ -602,6 +746,10 @@
           <li>自身の配信で実運用・継続改善中</li>
         </ul>
         <div class="work-period">制作期間 / 2026年5月〜 継続更新中</div>
+        <div class="work-actions">
+          <a class="mini-btn primary" href="#contact">デモについて相談</a>
+          <a class="mini-btn" href="#pricing">料金を見る</a>
+        </div>
       </div>
     </div>
 
@@ -613,62 +761,44 @@
   <div class="section-inner">
     <div class="section-label">Skills</div>
     <h2 class="section-title">Codex / Claude Code<span>活用力</span></h2>
-    <p class="section-desc">非エンジニアとして実務制作の中で磨いているCodex / Claude Code活用スキル。</p>
+    <p class="section-desc">点数ではなく、現在対応できることと実際の制作レベルが伝わるように整理しています。</p>
 
     <div class="skill-grid">
       <div class="skill-card">
-        <div class="skill-card-label">Tool Mastery</div>
-        <div class="skill-card-title">ツール活用深度</div>
-        <p>Worktree・メモリシステム・カスタムスキル・hooksを使いこなし、作業を体系化</p>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-label"><span></span><span>88 / 100</span></div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
-        </div>
+        <div class="skill-card-label">AI Tools</div>
+        <div class="skill-card-title">AIツール活用</div>
+        <p>Codex / Claude Code / ChatGPTを使い分け、構成相談、制作、修正指示、改善作業を進めています。</p>
+        <span class="skill-level">実制作で活用中</span>
       </div>
       <div class="skill-card">
-        <div class="skill-card-label">Operations</div>
-        <div class="skill-card-title">運用・保守</div>
-        <p>Git管理・GitHub Pages公開・セキュリティ設定・手順書化まで対応</p>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-label"><span></span><span>85 / 100</span></div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
-        </div>
+        <div class="skill-card-label">Static Web</div>
+        <div class="skill-card-title">静的Webサイト制作</div>
+        <p>HTML / CSS / JavaScriptを使ったポートフォリオ、告知LP、攻略サイトなどの制作に対応しています。</p>
+        <span class="skill-level">小規模サイトに対応</span>
       </div>
       <div class="skill-card">
-        <div class="skill-card-label">Architecture</div>
-        <div class="skill-card-title">プロジェクト設計</div>
-        <p>複数ページ構成・データ分離・再利用可能な構造を設計・実装</p>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-label"><span></span><span>80 / 100</span></div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
-        </div>
+        <div class="skill-card-label">Publish</div>
+        <div class="skill-card-title">公開・運用</div>
+        <p>Git管理、GitHub Pages公開、軽微な更新、手順整理まで対応しています。</p>
+        <span class="skill-level">GitHub Pages対応</span>
       </div>
       <div class="skill-card">
-        <div class="skill-card-label">UI / UX</div>
-        <div class="skill-card-title">UI実装の複雑度</div>
-        <p>ライトボックス・フィルター・アニメーション・レスポンシブを実装</p>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-label"><span></span><span>75 / 100</span></div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
-        </div>
+        <div class="skill-card-label">Streaming</div>
+        <div class="skill-card-title">配信素材制作</div>
+        <p>OBS / Streamlabsのブラウザソースで使えるHTMLオーバーレイ制作に対応しています。</p>
+        <span class="skill-level">OBS / Streamlabs対応</span>
       </div>
       <div class="skill-card">
-        <div class="skill-card-label">Portfolio</div>
-        <div class="skill-card-title">成果物の完成度</div>
-        <p>実際に自分で使い・運用し続けているプロダクトとして仕上げている</p>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-label"><span></span><span>70 / 100</span></div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
-        </div>
+        <div class="skill-card-label">Image Workflow</div>
+        <div class="skill-card-title">画像生成ワークフロー</div>
+        <p>GPT、Gemini、画像生成AIを使い、テーマ設計、プロンプト調整、画像選定、公開向け整理を行っています。</p>
+        <span class="skill-level">テーマ設計から整理まで</span>
       </div>
       <div class="skill-card">
-        <div class="skill-card-label">Position</div>
-        <div class="skill-card-title">実務活用ポジション</div>
-        <p>非エンジニア視点で、CodexとClaude Codeを制作・運用・公開まで実務に落とし込む活用スタイル</p>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-label"><span></span><span>実践中</span></div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:93%"></div></div>
-        </div>
+        <div class="skill-card-label">Improve</div>
+        <div class="skill-card-title">継続改善</div>
+        <p>完成後も実際に使いながら、見やすさ、使いやすさ、導線を改善しています。</p>
+        <span class="skill-level">公開後も改善</span>
       </div>
     </div>
   </div>
@@ -679,35 +809,181 @@
   <div class="section-inner">
     <div class="section-label">Service</div>
     <h2 class="section-title">対応できる<span>制作内容</span></h2>
-    <p class="section-desc">CodexとClaude Codeを活用して対応できる制作依頼の範囲です。</p>
+    <p class="section-desc">Codex / Claude Codeを活用して、個人配信者・クリエイター向けの小規模Web制作や配信素材制作に対応しています。現在は、GitHub Pagesで公開できる静的Webサイトと、OBS / Streamlabsで使えるHTMLオーバーレイ制作を中心に対応しています。</p>
     <div class="service-grid">
       <div class="service-card featured">
         <span class="service-badge">Today Ready</span>
         <h3>静的Webサイト制作</h3>
-        <p>ポートフォリオ・ゲーム攻略サイト・LP・個人ブログなど。<br>デザインから公開（GitHub Pages）まで対応。</p>
+        <p>ポートフォリオ、告知LP、個人ブログ風ページ、ゲーム攻略サイトなど。GitHub Pagesで公開できる小規模サイトを中心に対応します。</p>
+        <ul>
+          <li>ポートフォリオサイト</li>
+          <li>告知LP</li>
+          <li>個人活動紹介ページ</li>
+          <li>ゲーム攻略・情報整理サイト</li>
+          <li>BOOTHやXからつなげる紹介ページ</li>
+        </ul>
       </div>
       <div class="service-card featured">
         <span class="service-badge">Today Ready</span>
         <h3>配信オーバーレイ制作</h3>
-        <p>OBS / Streamlabs 対応のHTMLオーバーレイ。<br>opening・ending・BRB・live等、要望に合わせて制作。</p>
+        <p>OBS / Streamlabsで使えるHTMLオーバーレイを制作します。配信画面の雰囲気づくり、視認性、テーマ統一を意識します。</p>
+        <ul>
+          <li>ライブ画面</li>
+          <li>オープニング / エンディング画面</li>
+          <li>離席中画面</li>
+          <li>チャット枠・時計表示</li>
+          <li>カメラ枠・アラート用画面</li>
+        </ul>
       </div>
       <div class="service-card">
         <span class="service-badge pink">Coming Soon</span>
         <h3>オーバーレイテーマ販売</h3>
-        <p>Booth等での配信オーバーレイテーマの販売を準備中。<br>複数テーマをパッケージで提供予定。</p>
+        <p>BOOTHなどで配布・販売できる、配信者向けオーバーレイテーマパッケージを制作・準備しています。</p>
+        <ul>
+          <li>無料配布テーマ</li>
+          <li>単品販売テーマ</li>
+          <li>セット販売テーマ</li>
+          <li>色違いテーマ</li>
+          <li>配信画面一式パッケージ</li>
+        </ul>
       </div>
       <div class="service-card">
-        <span class="service-badge pink">Coming Soon</span>
+        <span class="service-badge pink">Consult</span>
         <h3>その他Webコンテンツ</h3>
-        <p>イベントページ・告知LP・ゲームコミュニティ向けサイトなど。<br>まずはご相談ください。</p>
+        <p>イベントページ、告知LP、ゲームコミュニティ向けサイトなど、小規模な静的Webコンテンツであれば相談可能です。</p>
+        <ul>
+          <li>イベントページ</li>
+          <li>告知LP</li>
+          <li>ゲームコミュニティ向けサイト</li>
+          <li>活動紹介ページ</li>
+          <li>相談だけでもOK</li>
+        </ul>
       </div>
     </div>
-    <div class="notice">
-      <p>
-        ※ 現在は静的Webサイト・配信オーバーレイの制作が対応範囲です。<br>
-        ログイン機能・ECサイト・既存コードの改修はお受けできません。<br>
-        まずはお気軽にXのDMでご相談ください。
-      </p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>こんな方におすすめ</h3>
+        <ul class="compact-list">
+          <li>配信用のオーバーレイを整えたい個人配信者</li>
+          <li>自分の活動をまとめるポートフォリオが欲しいクリエイター</li>
+          <li>BOOTHやXからつなげる告知ページが欲しい方</li>
+          <li>ゲームコミュニティ用の簡単なWebページを作りたい方</li>
+          <li>本格的なシステムではなく、まず見栄えの良い紹介ページが欲しい方</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>相談しやすい内容</h3>
+        <p>作りたいものが固まっていなくても大丈夫です。「こういうものは作れますか？」という段階から、用途や雰囲気を聞きながら整理します。</p>
+        <div class="work-actions">
+          <a class="mini-btn primary" href="#contact">相談先を見る</a>
+          <a class="mini-btn" href="#pricing">料金目安を見る</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Price</div>
+    <h2 class="section-title">料金<span>目安</span></h2>
+    <p class="section-desc">内容・画面数・修正回数・実績公開の可否によって料金は変動します。まずは小規模な制作から対応しています。正式な料金は、ご相談内容を確認してからご案内します。税込・税別の扱いは販売ページ公開時に調整します。</p>
+    <div class="price-grid">
+      <details class="price-card" open>
+        <summary>無料配布</summary>
+        <div class="details-body">
+          <p>配信者向けオーバーレイ6テーマをBOOTHで無料配布予定です。</p>
+          <div class="price-line"><span>無料オーバーレイ6テーマ</span><strong>0円</strong></div>
+        </div>
+      </details>
+      <details class="price-card" open>
+        <summary>単品制作・単品販売</summary>
+        <div class="details-body">
+          <p>まずは配信画面の一部だけ整えたい方向けのプランです。</p>
+          <div class="price-line"><span>ライブ画面</span><strong>1,000円</strong></div>
+          <div class="price-line"><span>ライブ画面＋チャット枠＋時計</span><strong>1,500円</strong></div>
+          <p>シンプルな構成から始めたい方に向いています。内容によって金額が変わる場合があります。</p>
+        </div>
+      </details>
+      <details class="price-card">
+        <summary>オーダーメイド制作</summary>
+        <div class="details-body">
+          <p>モニター価格として、先着3名まで受付予定です。実績公開OKの方を対象とした価格です。</p>
+          <div class="price-line"><span>ライブ画面</span><strong>3,000円</strong></div>
+          <div class="price-line"><span>オープニング画面</span><strong>3,000円</strong></div>
+          <div class="price-line"><span>エンディング画面</span><strong>3,000円</strong></div>
+          <div class="price-line"><span>OP＋ED＋ライブ画面セット</span><strong>8,000円</strong></div>
+          <div class="price-line"><span>OP＋ED＋離席中＋ライブ画面セット</span><strong>10,000円</strong></div>
+          <div class="price-line"><span>移動可能カメラ枠</span><strong>＋1,500円</strong></div>
+          <p>修正2回まで無料。3回目以降は追加料金、大幅な変更は別途見積もりです。</p>
+        </div>
+      </details>
+      <details class="price-card">
+        <summary>Webサイト制作</summary>
+        <div class="details-body">
+          <p>ポートフォリオ、告知LP、ゲーム攻略サイトなどの静的Webサイト制作は、ページ数・機能・デザイン内容によって大きく変わるため相談ベースです。</p>
+          <div class="price-line"><span>ポートフォリオサイト</span><strong>要相談</strong></div>
+          <div class="price-line"><span>告知LP</span><strong>要相談</strong></div>
+          <div class="price-line"><span>ゲーム攻略・情報整理サイト</span><strong>要相談</strong></div>
+          <div class="price-line"><span>BOOTHやXからつなげる紹介ページ</span><strong>要相談</strong></div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="scope">
+  <div class="section-inner">
+    <div class="section-label">Scope</div>
+    <h2 class="section-title">対応<span>範囲外</span></h2>
+    <p class="section-desc">現在は、静的Webサイト・配信オーバーレイ制作を中心に対応しています。トラブル防止のため、以下の内容は現在対応していません。</p>
+    <details class="scope-card" open>
+      <summary>現在対応していない内容</summary>
+      <div class="details-body">
+        <ul class="compact-list">
+          <li>ログイン機能・会員登録機能</li>
+          <li>決済機能・ECサイト</li>
+          <li>大規模なWebアプリ</li>
+          <li>サーバー構築が必要なシステム</li>
+          <li>既存コードの大幅な改修</li>
+          <li>複雑なデータベース連携</li>
+          <li>高度なセキュリティ対応が必要な案件</li>
+        </ul>
+        <p>GitHub Pagesで公開できる範囲の小規模サイトや、OBS / Streamlabsで使えるHTMLオーバーレイを中心に対応します。対応できるか分からない場合も、まずは相談内容を確認してから判断します。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="section-inner">
+    <div class="section-label">Flow</div>
+    <h2 class="section-title">ご相談から<span>納品まで</span></h2>
+    <p class="section-desc">作りたいものがはっきりしていなくても大丈夫です。用途や雰囲気を一緒に整理しながら進めます。</p>
+    <div class="flow-grid">
+      <div class="flow-step"><span>01</span><h3>ご相談</h3><p>XのDMまたはランサーズからご相談ください。</p></div>
+      <div class="flow-step"><span>02</span><h3>ヒアリング</h3><p>用途、雰囲気、必要な画面、希望カラーを確認します。</p></div>
+      <div class="flow-step"><span>03</span><h3>内容整理</h3><p>制作範囲、料金目安、納品形式、修正回数を確認します。</p></div>
+      <div class="flow-step"><span>04</span><h3>ラフ構成</h3><p>必要に応じて、画面構成や見せ方を簡単に整理します。</p></div>
+      <div class="flow-step"><span>05</span><h3>制作</h3><p>Codex / Claude Codeを活用して制作します。</p></div>
+      <div class="flow-step"><span>06</span><h3>確認・修正</h3><p>表示内容やデザインを確認し、必要に応じて修正します。</p></div>
+      <div class="flow-step"><span>07</span><h3>納品・公開</h3><p>HTMLファイル等で納品、またはGitHub Pagesなどで公開します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある<span>質問</span></h2>
+    <div class="price-grid">
+      <details class="faq-item"><summary>コードが分からなくても依頼できますか？</summary><div class="details-body">はい、大丈夫です。使用目的や雰囲気を聞きながら、こちらで形にします。</div></details>
+      <details class="faq-item"><summary>OBSやStreamlabsで使えますか？</summary><div class="details-body">はい。HTML形式のブラウザソースとして使える形を想定しています。</div></details>
+      <details class="faq-item"><summary>修正はできますか？</summary><div class="details-body">はい。基本的に修正2回まで無料です。3回目以降や大幅な変更は追加料金、または別途見積もりになります。</div></details>
+      <details class="faq-item"><summary>商用利用できますか？</summary><div class="details-body">制作内容ごとに相談して決めます。BOOTH販売用、配信活動用、告知用など、用途を確認したうえで対応します。</div></details>
+      <details class="faq-item"><summary>Webサイト制作も依頼できますか？</summary><div class="details-body">はい。GitHub Pagesで公開できる小規模な静的サイトを中心に対応可能です。ログイン機能や決済機能が必要なサイトは対応していません。</div></details>
+      <details class="faq-item"><summary>依頼内容がはっきりしていなくても相談できますか？</summary><div class="details-body">はい。「こういうものは作れますか？」という相談だけでも大丈夫です。</div></details>
     </div>
   </div>
 </section>
@@ -719,11 +995,12 @@
     <h2>お仕事・ご相談は<br><span>こちらから</span></h2>
     <p>
       制作依頼・ご質問・コラボのご相談など、<br>
-      お気軽にXのDMまたはランサーズよりご連絡ください。
+      まずはお気軽にXのDMまたはランサーズよりご連絡ください。<br>
+      「こういうものは作れますか？」という相談だけでも大丈夫です。
     </p>
     <div class="btn-group">
-      <a href="https://x.com/haryuu210" class="btn btn-primary" target="_blank" rel="noopener">X（旧Twitter）でDM</a>
-      <a href="https://www.lancers.jp/profile/takahiro210?ref=header_menu" class="btn btn-outline" target="_blank" rel="noopener">ランサーズへ</a>
+      <a href="https://x.com/haryuu210" class="btn btn-primary" target="_blank" rel="noopener">XでDMする</a>
+      <a href="https://www.lancers.jp/profile/takahiro210?ref=header_menu" class="btn btn-outline" target="_blank" rel="noopener">ランサーズを見る</a>
     </div>
   </div>
 </section>
@@ -750,22 +1027,6 @@
   ['days-count','days-hero','days-works','days-skill'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.textContent = days;
-  });
-
-  // スキルバーのアニメーション
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.width = entry.target.dataset.width;
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-    const w = bar.style.width;
-    bar.dataset.width = w;
-    bar.style.width = '0';
-    observer.observe(bar);
   });
 
   // ライトボックス（ホイールズーム・ドラッグ・ピンチズーム対応）
